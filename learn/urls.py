@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from portal import views, StaffViews
+from portal import views, StaffViews, StudViews
 from django.conf.urls.static import static
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from learn import settings
@@ -28,6 +28,7 @@ urlpatterns = [
     path('redirstaff', views.redirstaff, name='restf'),
     path('redirstud', views.redirstud, name='restud'),
     path('resignup', views.resignup, name='resignup'),
+    path('addnotes', StaffViews.addnotesform, name='add'),
     path('get_user_details', views.GetUserDetails),
     path('logout_user', views.logout_user, name='logout'),
 
@@ -35,6 +36,12 @@ urlpatterns = [
     path('stuLogin', views.stuLogin),
     path('staff_home', StaffViews.staff_home, name='staff_home'),
     path('staff_home/profile', StaffViews.view_profile, name='prof'),
-    path('student_home', StaffViews.stud_home),
-    path('signup', views.signup, name='signup')
+    path('student_home', StudViews.viewcourses, name='student_home'),
+    path('enroll/<int:sid>/<int:id>/',
+         StudViews.enroll, name='enroll'),
+    path('courselist/<int:id>/', StudViews.viewcourselist, name='courselist'),
+    path('viewnotes/<int:id>/', StudViews.viewnotes, name='viewnotes'),
+    path('accessnotes/<int:id>/', StudViews.accessnotes, name='accessnotes'),
+    path('signup', views.signup, name='signup'),
+
 ]

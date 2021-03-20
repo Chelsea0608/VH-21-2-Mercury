@@ -1,0 +1,9 @@
+{% load static %}
+{% block main_content %}
+ {% for n in notes %}
+    {% for cn in n %}
+    <p>{{ cn }}</p>
+    {% endfor %}
+{% endfor %}
+   <p>{{ notes }}</p> 
+{% endblock main_content %}

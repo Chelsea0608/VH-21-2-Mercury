@@ -58,16 +58,16 @@
             <div id="main-menu" class="main-menu collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li class="active">
-                        <a href="{% url 'student_home' %}"> <i class="menu-icon fa fa-dashboard" ></i><b>Home</b></a>
+                        <a href=""> <i class="menu-icon fa fa-dashboard" ></i><b>Home</b></a>
                     </li>
                     
                     <h3 class="menu-title">Get Started</h3><!-- /.menu-title -->
 
                     <li >
-                        <a href="{% url 'courselist' user.students.id %}"> <i class="menu-icon fa fa-tasks"></i>My Courses</a>
+                        <a href="{% url 'add' %}"> <i class="menu-icon fa fa-tasks"></i>Add Notes</a>
                     </li>
                     <li >
-                        <a href="{% url 'viewnotes' user.students.id %}"> <i class="menu-icon fa fa-tasks"></i>View Course Materials</a>
+                        <a href="{% url 'prof' %}"> <i class="menu-icon fa fa-tasks"></i>View Profile</a>
                     </li>
                      <li >
                         <a href="{% url 'logout' %}"> <i class="menu-icon fa fa-tasks"></i>Logout</a>
@@ -143,7 +143,7 @@
                 <div class="col-sm-5">
                     <div class="user-area dropdown float-right">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <p>Welcome, {{user.first_name}}!</p>
+                            <p>Welcome Back, {{user.first_name}}!</p>
                         </a>
 
                         <div class="user-menu dropdown-menu">
@@ -228,34 +228,51 @@
         <br>
 
         <div class="container mt-5 ">
-            <h2 style="text-align:center; color:navy">Courses</h2>
-            <br>
+            <h2 style="text-align:center; color:navy">Your Course</h2>
+            <br><br><br>
             {% block main_content %}
-                <table class="table table-borderless">
-                    <thead class="border-bottom font-weight-bold">
-                        <td>Course ID</td>
-                        <td>Course</td>
-                        <td>Description</td>
-                        <td>Enroll</td>
-                    </thead>
-                    <tbody>
-                        {% for course in courses_list %}
-                        <tr>
-                            <td>{{course.id}}</td>
-                            <td>{{course.course_name}}</td>
-                            <td>{{course.description}}</td>
-                            <td><a href="{% url 'enroll' user.students.id course.id %}" class="btn text-secondary px-0">
-                                <i class="far fa-edit fa-lg"></i> Enroll
-                            </a></td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-
+                <div class="sufee-login d-flex align-content-center flex-wrap">
+            <div class="container">
+                <div class="login-content">
+                    <div class="login-form">
+                        <form id="form-submit"  action="/addnotes" method="post" enctype="multipart/form-data">
+                             {% csrf_token %}
+                            <div class="form-group">
+                                <label>Lecture Number</label>
+                                <input type="text" class="form-control" placeholder="lec_no" name="lec_no">
+                            </div>
+                                <div class="form-group">
+                                    <label>Pdfs Link</label>
+                                    <input type="url" class="form-control" placeholder="pdf" name="pdf">
+                            </div>
+                            <div class="form-group">
+                                <label>Video</label>
+                                    <input type="url" class="form-control" placeholder="Link" name="link">
+                                    
+                            </div>
+                            <div class="form-group">
+                                    <label>Assignment</label>
+                                    <textarea class="form-control" placeholder="Information" name="assign"></textarea>
+                            </div>
+                                 <!--    <div class="checkbox">
+                                        <label>
+                                    <input type="checkbox"> Remember Me
+                                </label>
+    
+                                    </div> -->
+                                    <button type="submit" class="btn btn-success btn-flat m-b-30 m-t-30">Add Notes</button>
+                                   <!--  <div class="register-link m-t-15 text-center">
+                                        <p>Don't have account ? <a href="signup.html"> Sign Up Here</a></p>
+                                    </div> -->
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
             {% endblock main_content %}
                     
         </div>
-        <br>
+        <br><br><br><br><br>
 
      <div class="footer">
         

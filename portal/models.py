@@ -41,7 +41,7 @@ class Notes(models.Model):
     id = models.AutoField(primary_key=True)
     course_id = models.ForeignKey(Courses, on_delete=models.CASCADE)
     lec_no = models.CharField(max_length=4)
-    pdfs = models.FileField()
+    pdfs = models.CharField(max_length=255)
     video_links = models.CharField(max_length=255)
     assignment = models.CharField(max_length=255)
     staff_id = models.ForeignKey(Staffs, on_delete=models.CASCADE)

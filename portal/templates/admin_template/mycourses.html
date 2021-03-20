@@ -6,7 +6,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>E-Learning Portal </title>
+    <title>E-Learning Portal My Courses</title>
     <meta name="description" content="Sufee Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -233,20 +233,20 @@
             {% block main_content %}
                 <table class="table table-borderless">
                     <thead class="border-bottom font-weight-bold">
+                        <td>Enrollment ID</td>
+                        <td>Course Name</td>
+                        <td>Student Name</td>
                         <td>Course ID</td>
-                        <td>Course</td>
-                        <td>Description</td>
-                        <td>Enroll</td>
+                        <td>Student ID</td>
                     </thead>
                     <tbody>
-                        {% for course in courses_list %}
+                        {% for sc in sc_list %}
                         <tr>
-                            <td>{{course.id}}</td>
-                            <td>{{course.course_name}}</td>
-                            <td>{{course.description}}</td>
-                            <td><a href="{% url 'enroll' user.students.id course.id %}" class="btn text-secondary px-0">
-                                <i class="far fa-edit fa-lg"></i> Enroll
-                            </a></td>
+                            {% for s in sc%}
+                        
+                            <td>{{ s }}</td>
+                        
+                        {% endfor %}
                         </tr>
                         {% endfor %}
                     </tbody>

@@ -64,7 +64,7 @@
                     <h3 class="menu-title">Get Started</h3><!-- /.menu-title -->
 
                     <li >
-                        <a href=""> <i class="menu-icon fa fa-tasks"></i>Add Courses</a>
+                        <a href="{% url 'add' %}"> <i class="menu-icon fa fa-tasks"></i>Add Notes</a>
                     </li>
                     <li >
                         <a href="{% url 'prof' %}"> <i class="menu-icon fa fa-tasks"></i>View Profile</a>
@@ -229,14 +229,14 @@
 
         <div class="container mt-5 ">
             <h2 style="text-align:center; color:navy">Your Course</h2>
-            <br>
+            <br><br><br>
             {% block main_content %}
-
-
+                <h1>{{ courses.course_name }}</h1><br>
+                <h4>{{ courses.description }}</h4>
             {% endblock main_content %}
                     
         </div>
-        <br>
+        <br><br><br><br><br>
 
      <div class="footer">
         
